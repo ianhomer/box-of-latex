@@ -10,3 +10,6 @@
 			-halt-on-error $(shell basename $*.tex) | grep -v "[()]"
 	@open $*.pdf
 	@osascript refresh-preview.scpt
+
+clean:
+	rm */*.aux */*.log */*.out
