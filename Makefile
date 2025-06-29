@@ -2,7 +2,8 @@
 
 %.pdf: %.tex
 	@echo "Reloading ...${directory}"
-	@pdflatex -output-directory=${directory} $*.tex \
-		>/dev/null
+	@cd ${directory} &&                  \
+		pdflatex -interaction=nonstopmode \
+			-halt-on-error $(shell basename $*.tex)
 	@open $*.pdf
 	@osascript refresh-preview.scpt
