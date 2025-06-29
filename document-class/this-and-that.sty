@@ -1,6 +1,4 @@
 
-%\usepackage[utf8]{inputenc}
-%\usepackage[default]{raleway}
 \usepackage[margin=2cm, a4paper]{geometry}
 
 \usepackage{tikz}
@@ -8,9 +6,6 @@
 \usepackage{paracol}
 \usepackage{lipsum}  
 \usepackage{cmap}
-
-%\setlength{\parindent}{0pt}
-%\setlength{\parskip}{.5\baselineskip plus \smallskipamount minus \smallskipamount}
 
 \newcommand{\banner}[2]
   {
@@ -24,16 +19,16 @@
     \vspace{3cm}
   }
 %
-% \newenvironment{layout}[2][text]
-%   {
-%     \def\second{#2}
-%     \setcolumnwidth{\fill, 10 cm}
-%     \begin{paracol}{2}
-%     #1
-%     \switchcolumn
-%   }
-%   {
-%     \second
-%     \end{paracol}
-%   }
-%
+\newenvironment{two-col}[2][text]
+  {
+    \def\second{#2}
+    \setcolumnwidth{\fill, 10 cm}
+    \begin{paracol}{2}
+    #1
+    \switchcolumn
+  }
+  {
+    \second
+    \end{paracol}
+  }
+
