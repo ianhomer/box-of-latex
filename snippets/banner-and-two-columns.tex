@@ -1,9 +1,17 @@
 \documentclass[10pt, letterpaper]{article}
 
+%\usepackage[utf8]{inputenc}
+%\usepackage[default]{raleway}
+\usepackage[margin=2cm, a4paper]{geometry}
+
 \usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{paracol}
 \usepackage{lipsum}  
+\usepackage{cmap}
+
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{.5\baselineskip plus \smallskipamount minus \smallskipamount}
 
 \title{Banner}
 \author{A.N. Other}
@@ -16,10 +24,10 @@
     };
     \node[draw=none, below](secondary) at (primary.south){\color{white}Secondary};% 
   }
+  \vspace{3cm}
 
-  \setcolumnwidth{\fill, 8 cm}
+  \setcolumnwidth{\fill, 10 cm}
   \begin{paracol}{2}
-  \flushleft
   \lipsum[1]
   \switchcolumn
   \lipsum[2-4] 
