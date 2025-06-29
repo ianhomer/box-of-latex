@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+fileToPreview=$1
+
+if [[ -z ${fileToPreview} ]] ; then
+  echo "Please specify tex file to preview"
+  exit 1
+fi
+
+# Input can be either pdf or tex and this'll sort it out
+texFile=${fileToPreview%.*}.tex
+pdfFile=${fileToPreview%.*}.pdf
+
+echo "Previewing $texFile"
+make --always-make "$pdfFile"
+fswatch -o "$texFile" | xargs -n1 -I{} make preview "$pdfFile"
