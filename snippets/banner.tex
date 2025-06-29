@@ -1,0 +1,21 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\title{Banner}
+\author{A.N. Other}
+\date{June 2025}
+\begin{document}
+  \tikz[remember picture,overlay] {
+    \node[rectangle, fill=black, anchor=north, minimum width=\paperwidth, minimum height=3.5cm](banner) at (current page.north){};%
+    \node[draw=none](primary) at (banner) {
+      {\Huge \color{white}Primary}
+    };
+    \node[draw=none, below](secondary) at (primary.south){\color{white}Secondary};% 
+  }
+
+  Banner created with tikz - \url{https://tikz.dev/}
+
+  See also a \url{https://www.overleaf.com/learn/latex/TikZ_package}
+\end{document}
