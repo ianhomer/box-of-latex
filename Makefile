@@ -1,4 +1,4 @@
-%.pdf: directory = $(shell dirname $*.tex) 
+%.pdf: directory = $(shell dirname $*.tex)
 
 %.pdf: %.tex
 	@echo "Reloading ...${directory}"
