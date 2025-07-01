@@ -7,6 +7,7 @@
 \usepackage{fontawesome5}      % icons, e.g. phone, linkedin
 \usepackage[default]{raleway}  % raleway font
 \usepackage{needspace}         % to avoid page break after section title
+\usepackage{enumitem}          % item list styling
 
 \usepackage[explicit]{titlesec}
 \titleformat{\section}
@@ -15,6 +16,23 @@
   {}
   {\textbf{\textsc{#1}}\hspace{0.12cm}\titlerule[0.7pt]\hspace{-0.1cm}}
   []
+\titleformat{\subsection}
+  {\needspace{4\baselineskip}\color{background}}
+  {}
+  {}
+  {\textbf{#1}}
+  [\titlerule]
+\titleformat{\subsubsection}
+  {\needspace{4\baselineskip}\color{background}}
+  {}
+  {}
+  {\textbf{#1}}
+  []
+
+% list styling
+\renewcommand\labelitemi{\raisebox{-0.2em}{\Large \textbullet}}
+\setlist{noitemsep}
+
 
 \hbadness 500000               % don't report on underfull or overfull
 
@@ -55,7 +73,7 @@
     \fontsize{9}{12}\selectfont
     \def\second{#2}
     \setlength{\columnsep}{1.2cm}
-    \setcolumnwidth{\fill, 11 cm}
+    \setcolumnwidth{\fill, 12 cm}
     \begin{paracol}{2}
     #1
     \switchcolumn
@@ -67,6 +85,6 @@
 
 \newenvironment{job}[3]
   {
-    #1, #2 \hfill #3 \\
+    \subsection{#1, #2 \hfill \textsc{#3}}
   }
   {}
