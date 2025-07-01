@@ -1,22 +1,31 @@
-\usepackage[margin=2cm, a4paper]{geometry}
-
+\usepackage[margin=1.5cm, a4paper]{geometry}
 
 \usepackage{tikz}
 \usepackage[hidelinks, implicit=false]{hyperref}
 \usepackage{paracol}
-\usepackage{cmap}           % better copy and paste handling
-\usepackage{fontawesome5}   % icons, e.g. phone, linkedin
+\usepackage{cmap}              % better copy and paste handling
+\usepackage{fontawesome5}      % icons, e.g. phone, linkedin
+\usepackage[default]{raleway}  % raleway font
+\usepackage{needspace}         % to avoid page break after section title
 
-\hbadness 500000            % don't report on underfull or overfull
+\usepackage[explicit]{titlesec}
+\titleformat{\section}
+  {\needspace{4\baselineskip}\Large\color{background}}
+  {}
+  {}
+  {\textbf{#1}\hspace{0.12cm}\titlerule[0.7pt]\hspace{-0.1cm}}
+  []
+
+\hbadness 500000               % don't report on underfull or overfull
 
 % Improve copy & pasting and ATS parsing
 \input{glyphtounicode}
 \pdfgentounicode=1
 
-\pagestyle{empty}           % no header or footer
-\setcounter{secnumdepth}{0} % no section numbering
-\setlength{\parindent}{0pt} % don't indent first line in paragraph
-\def\arraystretch{1.5}      % table paddings
+\pagestyle{empty}              % no header or footer
+\setcounter{secnumdepth}{0}    % no section numbering
+\setlength{\parindent}{0pt}    % don't indent first line in paragraph
+\def\arraystretch{1.5}         % table paddings
 
 \newcommand{\banner}
   {
@@ -26,25 +35,28 @@
         {\Huge \color{white}\@author}
       };
       \node[draw=none, below](secondary) at (primary.south){\color{white}\@title};%
+      \node[draw=none, xshift=-3cm](right) at (banner.east)
+        {
+          \color{white}
+          \begin{tabular}{l l}
+            \ifdefined\location \faMapMarker* & \location \\ \fi
+            \ifdefined\email \faEnvelope[regular] & \email \\ \fi
+            \ifdefined\phone \faPhone & \phone \\ \fi
+            \ifdefined\linkedin \faLinkedinIn & \href{https://www.linkedin.com/in/\linkedin/}{\linkedin} \\ \fi
+          \end{tabular}
+        }
     }
     \vspace{3cm}
   }
-
 \AddToHook{begindocument/end}{\banner}
 
 \newenvironment{two-col}[2]
   {
+    \fontsize{9}{12}\selectfont
     \def\second{#2}
+    \setlength{\columnsep}{1.2cm}
     \setcolumnwidth{\fill, 10 cm}
     \begin{paracol}{2}
-
-    \begin{tabular}{l l}
-      \ifdefined\location {\faMapMarker*} & \location \\ \fi
-      \ifdefined\email {\faEnvelope[regular]} & \email \\ \fi
-      \ifdefined\phone {\faPhone} & \phone \\ \fi
-      \ifdefined\linkedin {\faLinkedinIn} & \href{https://www.linkedin.com/in/\linkedin/}{\linkedin} \\ \fi
-    \end{tabular}
-
     #1
     \switchcolumn
   }
@@ -52,3 +64,9 @@
     \second
     \end{paracol}
   }
+
+\newenvironment{job}[3]
+  {
+    #1, #2 \hfill #3 \\
+  }
+  {}

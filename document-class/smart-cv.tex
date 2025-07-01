@@ -1,4 +1,6 @@
-\documentclass{smart-cv}
+\documentclass[9pt]{smart-cv}
+
+\usepackage{lipsum}
 
 \author{A.N. Other}
 \title{Software Engineer}
@@ -9,16 +11,28 @@
 \def\linkedin{ianhomer}
 \def\location{Reading, UK}
 
-\definecolor{background}{HTML}{009688}
+\definecolor{background}{HTML}{063970}
 
 \begin{document}
   \begin{two-col}
     {
-      First
+      \section*{Profile}
+
+      \lipsum[1]
     }
 
-    \section*{Profile}
+    \section{Work Experience}
 
-    This is a profile
+    \begin{job}
+      {Company}
+      {role}
+      {Jan 2015 - June 2022}
+      \begin{itemize}
+        \item achievement 1
+        \item achievement 1x
+      \end{itemize}
+      \textbf{Tech:} thing1, thing2
+    \end{job}
+
   \end{two-col}
 \end{document}
