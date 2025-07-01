@@ -1,0 +1,35 @@
+\usepackage[margin=2cm, a4paper]{geometry}
+
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{paracol}
+\usepackage{lipsum}  
+\usepackage{cmap}
+
+\newcommand{\banner}
+  {
+    \tikz[remember picture,overlay] {
+      \node[rectangle, fill=black, anchor=north, minimum width=\paperwidth, minimum height=3.5cm](banner) at (current page.north){};%
+      \node[draw=none](primary) at (banner) {
+        {\Huge \color{white}\@author}
+      };
+      \node[draw=none, below](secondary) at (primary.south){\color{white}\@title};% 
+    }
+    \vspace{3cm}
+  }
+
+\AddToHook{begindocument/end}{\banner}
+
+\newenvironment{two-col}[2][text]
+  {
+    \def\second{#2}
+    \setcolumnwidth{\fill, 10 cm}
+    \begin{paracol}{2}
+    #1
+    \switchcolumn
+  }
+  {
+    \second
+    \end{paracol}
+  }
+
