@@ -1,10 +1,15 @@
 \usepackage[margin=2cm, a4paper]{geometry}
 
 \usepackage{tikz}
-\usepackage{hyperref}
+\usepackage[hidelinks, implicit=false]{hyperref}
 \usepackage{paracol}
 \usepackage{cmap}           % better copy and paste handling
 \usepackage{fontawesome5}   % icons, e.g. phone, linkedin
+
+\hbadness 500000            % don't report on underfull or overfull
+
+\setlength{\parindent}{0pt} % don't indent first line in paragraph
+\def\arraystretch{1.5}      % table paddings
 
 \newcommand{\banner}
   {
@@ -26,7 +31,13 @@
     \setcolumnwidth{\fill, 10 cm}
     \begin{paracol}{2}
 
-    \ifdefined\phone {\faPhone}\hspace*{0.13cm}\phone \fi
+    \begin{tabular}{l l}
+      \ifdefined\location {\faMapMarker*} & \location \\ \fi
+      \ifdefined\email {\faEnvelope[regular]} & \email \\ \fi
+      \ifdefined\phone {\faPhone} & \phone \\ \fi
+      \ifdefined\linkedin {\faLinkedinIn} & \href{https://www.linkedin.com/in/\linkedin/}{\linkedin} \\ \fi
+    \end{tabular}
+
     #1
     \switchcolumn
   }
