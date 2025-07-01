@@ -11,19 +11,19 @@
 
 \usepackage[explicit]{titlesec}
 \titleformat{\section}
-  {\needspace{4\baselineskip}\Large\color{background}}
+  {\needspace{4\baselineskip}\Large\color{primary}}
   {}
   {}
   {\textbf{\textsc{#1}}\hspace{0.12cm}\titlerule[0.7pt]\hspace{-0.1cm}}
   []
 \titleformat{\subsection}
-  {\needspace{4\baselineskip}\color{background}}
+  {\needspace{4\baselineskip}\color{primary}}
   {}
   {}
   {\textbf{#1}}
   [\titlerule]
 \titleformat{\subsubsection}
-  {\needspace{4\baselineskip}\color{background}}
+  {\needspace{4\baselineskip}\color{primary}}
   {}
   {}
   {\textbf{#1}}
@@ -48,7 +48,7 @@
 \newcommand{\banner}
   {
     \tikz[remember picture,overlay] {
-      \node[rectangle, fill=background, anchor=north, minimum width=\paperwidth, minimum height=3.5cm](banner) at (current page.north){};%
+      \node[rectangle, fill=primary, anchor=north, minimum width=\paperwidth, minimum height=3.5cm](banner) at (current page.north){};%
       \node[draw=none](primary) at (banner) {
         {\Huge \color{white}\@author}
       };
