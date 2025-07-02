@@ -1,13 +1,22 @@
 \usepackage[margin=1.5cm, a4paper]{geometry}
 
 \usepackage{tikz}
-\usepackage[hidelinks, implicit=false]{hyperref}
+\usepackage[hidelinks, implicit=false, pdftex]{hyperref}
 \usepackage{paracol}
 \usepackage{cmap}              % better copy and paste handling
 \usepackage{fontawesome5}      % icons, e.g. phone, linkedin
 \usepackage[default]{raleway}  % raleway font
 \usepackage{needspace}         % to avoid page break after section title
 \usepackage{enumitem}          % item list styling
+
+% Set PDF info with command so it can be called after globals set
+\newcommand{\setpdfinfo}
+  {
+    \hypersetup{
+        pdftitle = {\@author - \@title},
+        pdfauthor = {\@author}
+    }
+  }
 
 \usepackage[explicit]{titlesec}
 \titleformat{\section}
